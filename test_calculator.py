@@ -1,5 +1,5 @@
 import pytest
-from calculator import add, subtract
+from calculator import add, subtract, multiply, divide
 
 
 # ─── 덧셈 ────────────────────────────────
@@ -21,3 +21,31 @@ class TestSubtract:
 
     def test_subtract_negative_result(self):
         assert subtract(3, 7) == -4
+
+# ─── 곱셈 ────────────────────────────────
+class TestMultiply:
+    def test_multiply_basic(self):
+        assert multiply(3, 4) == 12
+
+    def test_multiply_by_zero(self):
+        assert multiply(5, 0) == 0
+
+    def test_multiply_negatives(self):
+        assert multiply(-2, 3) == -6
+
+# ─── 나눗셈 ──────────────────────────────
+class TestDivide:
+    def test_divide_basic(self):
+        assert divide(10, 2) == 5.0
+
+    def test_divide_float_result(self):
+        assert divide(7, 2) == 3.5
+
+    def test_divide_by_zero_raises(self):
+        with pytest.raises(ValueError):
+            divide(5, 0)
+    
+    def test_divide_by_zero(self):
+    # 0으로 나눌 때 ValueError가 발생하는지 테스트
+        with pytest.raises(ValueError) as excinfo:
+            divide(-5, 0)

@@ -44,3 +44,8 @@ class TestDivide:
     def test_divide_by_zero_raises(self):
         with pytest.raises(ValueError):
             divide(5, 0)
+    
+    def test_divide_by_zero(self):
+    # 0으로 나눌 때 ValueError가 발생하는지 테스트
+        with pytest.raises(ValueError) as excinfo:
+            divide(-5, 0)
